@@ -10,6 +10,7 @@ const typeDefs = gql`
     employee_id: ID!
     new_hire: Boolean!
   }
+
   enum Gender {
     Male
     Female
@@ -19,6 +20,7 @@ const typeDefs = gql`
   # Queries
   type Query {
     getAllEmployees: [Employee!]!
+    getEmpID(ids: [Int]): [Employee]!
   }
 `;
 
