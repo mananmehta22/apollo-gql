@@ -39,20 +39,31 @@ const resolvers = {
       employees.push(newEmployee);
       return newEmployee;
     },
-      updateEmployee(_, { first_name, last_name, birth_day, gender, emp_id, new_hire }) { 
-        const emp = employees.find(o => o.employee_id == emp_id);
+      updateEmployee( root, args, context)
+      {
+        const emp = employees.find(o => o.employee_id == args.emp_id);
         console.log(emp);
         if (!emp) {
-          throw new Error(`Couldn't find employee with id ${emp_id}`);
+          throw new Error(`Couldn't find employee with id ${args.emp_id}`);
         }
-        emp.first_name = first_name; 
-        emp.last_name = last_name;
-        emp.birth_day = birth_day;
-        emp.gender = gender;
-        emp.new_hire = new_hire;
-        return emp;
-}
-    }
+        if (args.first_name !== undefined) {
+          emp.first_name = args.first_name; 
+        }
+        if (args.last_name !== undefined) {
+          emp.last_name = args.last_name; 
+        }
+        if (args.gender !== undefined) {
+          emp.gender = args.gender; 
+        }
+        if (args.birth_day !== undefined) {
+          emp.birth_day = args.birth_day; 
+        }
+        if (args.new_hire !== undefined) {
+          emp.new_hire = args.new_hire; 
+        }
+      return emp;
+      },
+    },
 };
 
 module.exports = { customScalarResolver }
