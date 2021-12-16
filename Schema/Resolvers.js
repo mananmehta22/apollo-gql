@@ -40,7 +40,8 @@ const resolvers = {
       return newEmployee;
     },
       updateEmployee(_, { first_name, last_name, birth_day, gender, emp_id, new_hire }) { 
-        const emp = employees.find(_employee_id => emp_id ); 
+        const emp = employees.find(o => o.employee_id == emp_id);
+        console.log(emp);
         if (!emp) {
           throw new Error(`Couldn't find employee with id ${emp_id}`);
         }
