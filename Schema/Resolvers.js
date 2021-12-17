@@ -42,7 +42,6 @@ const resolvers = {
       updateEmployee( root, args, context)
       {
         const emp = employees.find(o => o.employee_id == args.emp_id);
-        console.log(emp);
         if (!emp) {
           throw new Error(`Couldn't find employee with id ${args.emp_id}`);
         }
@@ -62,6 +61,18 @@ const resolvers = {
           emp.new_hire = args.new_hire; 
         }
       return emp;
+      },
+      deleteEmployee(parent, args, context, info)
+      {
+        if (employees.hasOwnProperty(args.emp_id))
+        {
+        const emp = employees.filter(a => a.employee_id != args.emp_id)
+        console.log(emp);
+        return emp;
+        }
+        else {
+          throw new Error(`Couldn't find employee with id ${args.emp_id}`);
+        }
       },
     },
 };

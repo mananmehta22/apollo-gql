@@ -46,3 +46,4 @@ let employees = [
 ];
 
 module.exports = { employees };
+module.exports =  getID = (employee_id) => employees.find(id => id.employee_id == employee_id)
