@@ -12,10 +12,20 @@ const resolvers = {
         Female: "F",
       },
     Query: {
-        getAllEmployees() {
+        getAllEmployees(parent, context, args, info) {
+          if (!context.isAuth)
+          return {
+            error: true,
+            message: "Token doesn't find!",
+          };
             return employees;
         },
         getEmpID(parent, args, context, info) {
+          if (!context.isAuth)
+          return {
+            error: true,
+            message: "Token doesn't find!",
+          };
           const { ids } = args;
           if (ids == 0)
           {
@@ -34,13 +44,23 @@ const resolvers = {
         }, 
     },
     Mutation: {
-      createEmployee(parent, args) {
+      createEmployee(parent, args, context) {
       const newEmployee = args;
+      if (!context.isAuth)
+      return {
+        error: true,
+        message: "Token doesn't find!",
+      };
       employees.push(newEmployee);
       return newEmployee;
     },
       updateEmployee( root, args, context)
       {
+        if (!context.isAuth)
+        return {
+          error: true,
+          message: "Token doesn't find!",
+        };
         const emp = employees.find(o => o.employee_id == args.emp_id);
         if (!emp) {
           throw new Error(`Couldn't find employee with id ${args.emp_id}`);
@@ -64,6 +84,11 @@ const resolvers = {
       },
       deleteEmployee(parent, args, context, info)
       {
+        if (!context.isAuth)
+        return {
+          error: true,
+          message: "Token doesn't find!",
+        };
         if (employees.hasOwnProperty(args.emp_id))
         {
         const emp = employees.filter(a => a.employee_id != args.emp_id)

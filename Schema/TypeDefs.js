@@ -20,7 +20,7 @@ const typeDefs = gql`
   # Queries
   type Query {
     getAllEmployees: [Employee!]!
-    getEmpID(ids: [Int]): [Employee]!
+    getEmpID(ids: [Int]): [Employee!]!
   },
   #Mutation
   type Mutation {
