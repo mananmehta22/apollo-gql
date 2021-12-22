@@ -26,5 +26,5 @@ module.exports = (request) => {
   if (!!!decodeToken) return { isAuth: false };
 
   // token decoded successfully, and extracted data
-  return { isAuth: true, userId: decodeToken.userId };
+  return { isAuth: true, employee_id: decodeToken.employee_id };
 };
