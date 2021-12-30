@@ -22,7 +22,7 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("Table created");
     }); */
-    var sql1 = `INSERT INTO customers (first_name, last_name, 
+    var sql1 = `INSERT INTO employees (first_name, last_name, 
             birth_day, gender, 
             employee_id, new_hire) VALUES ?`;
             con.query(sql1, employees, function (err, result) {
