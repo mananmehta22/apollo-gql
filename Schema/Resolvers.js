@@ -8,8 +8,8 @@ const customScalarResolver = {
 
 const resolvers = {
     Gender: {
-        Male: 'Male',
-        Female: 'Female',
+        Male: "Male",
+        Female: "Female",
       },
     Query: {
         getAllEmployees() {
