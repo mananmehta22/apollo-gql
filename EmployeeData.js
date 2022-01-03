@@ -20,7 +20,7 @@ var employees = [
     {
         first_name: "Shreyaa",
         last_name: "Mendhe",
-        birth_day: "1994-04-5",
+        birth_day: "1994-04-05",
         gender: "Female",
         employee_id: 3,
         new_hire: false,
