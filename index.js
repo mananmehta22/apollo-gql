@@ -2,6 +2,9 @@ const express = require("express");
 const { ApolloServer} = require("apollo-server-express");
 const { typeDefs } = require("./Schema/TypeDefs");
 const { resolvers } = require("./Schema/Resolvers");
+const { dotenv } = require("dotenv").config();
+
+const { dbService } = require("./dbService");
 
 
 async function startApolloServer(typeDefs, resolvers){
